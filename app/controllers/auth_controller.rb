@@ -14,6 +14,7 @@ class AuthController < ApplicationController
                 token = encode(payload)
                 render json: {
                     teacher: teacher,
+                    studentData: teacher.allStudentsData,
                     error: false,
                     token: token
                 }
