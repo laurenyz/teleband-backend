@@ -21,14 +21,15 @@ class TeachersController < ApplicationController
                             :except => [:created_at]}]}]}]})
     end
 
-
-    def profile
-        
+    def profile 
         token = request.headers["Authentication"]
         payload = decode(token)
         teacher = Teacher.find(payload["teacher_id"])
-
-        render json: teacher
+        
+        render json: {
+            teacher: teacher,
+            studentData: teacher.allStudentsData
+        }
     end
 
 #     {
