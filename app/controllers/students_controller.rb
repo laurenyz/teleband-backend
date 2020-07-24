@@ -9,8 +9,24 @@ class StudentsController < ApplicationController
         student = Student.find(params[:id])
         render json: student.to_json(
             :except => [:created_at, :updated_at],
-            :include => [:assignments => {:except => [:created_at, :updated_at, :excerpts, :audios],:include => [:student_assignments => {:except =>[ :created_at, :updated_at, :tone, :rhythm, :expression, :student_id, :assignment_id] }]}]
+            :include => [:student_assignments => 
+            {:except => 
+            [:created_at, :updated_at, :audios],
+            :include => 
+            [:assignment => 
+            {:except =>[ :created_at, :updated_at] 
+            }]}]
         )
+
+        # render json: {
+        #     assignments: student.assignments,
+        #     student_assignments: student.student_assignments,
+        #     student:
+
+        # }
+
+
+
         # Should return
         # {
         #     [
