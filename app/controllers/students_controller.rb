@@ -27,4 +27,25 @@ class StudentsController < ApplicationController
         #     ]
         #  }
     end
+
+    # def profile
+    #     token = request.headers["Authentication"]
+    #     payload = decode(token)
+    #     user = User.find(payload["user_id"])
+
+    #     if user.scratchpads
+    #         render json: {
+    #             user: user,
+    #             upvotes: user.upvotes.length,
+    #             image_url: user.get_image_url(),
+    #             scratchpads: user.user_scratchpads
+    #             } 
+    #     else
+    #         render json: {
+    #             user: user,
+    #             upvotes: user.upvotes.length,
+    #             image_url: user.get_image_url()
+    #             } 
+    #     end
+    # end
 end
