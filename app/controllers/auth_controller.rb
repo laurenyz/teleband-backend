@@ -1,9 +1,12 @@
 class AuthController < ApplicationController
 
     def create 
-        if params["school-id"]
+        if params["school_id"]
             student = Student.find_by(school_id: params["school_id"])
-            render json: student
+            render json: {
+                student: student,
+                token: params["school_id"]
+        }
         else
             teacher = Teacher.find_by(email: params["email"])
             if teacher && teacher.authenticate(params["password"])
@@ -11,7 +14,8 @@ class AuthController < ApplicationController
                 token = encode(payload)
                 render json: {
                     teacher: teacher,
-                    error: false
+                    error: false,
+                    token: token
                 }
             else
                 render json: {
