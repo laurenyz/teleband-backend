@@ -32,6 +32,10 @@ class TeachersController < ApplicationController
         }
     end
 
+    def update
+
+    
+    end
 #     {
 #   [
 #     {
