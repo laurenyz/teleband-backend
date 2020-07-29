@@ -57,8 +57,7 @@ StudentAssignment.create(student: lauren, assignment: assignment6, student_audio
 StudentAssignment.create(student: lauren, assignment: assignment7, student_audio:"", tone: nil, expression: nil, rhythm: nil)
 StudentAssignment.create(student: matteo, assignment: assignment1, student_audio:"", tone: nil, expression: nil, rhythm: nil)
 StudentAssignment.create(student: matteo, assignment: assignment2, student_audio:"", tone: nil, expression: nil, rhythm: nil)
-StudentAssignment.create(student: matteo, assignment: assignment3, student_audio:"", tone: nil, expression: nil, rhythm: nil)
-StudentAssignment.create(student: matteo, assignment: assignment4, student_audio:"", tone: nil, expression: nil, rhythm: nil)
+
 StudentAssignment.create(student: matteo, assignment: assignment5, student_audio:"", tone: nil, expression: nil, rhythm: nil)
 StudentAssignment.create(student: matteo, assignment: assignment6, student_audio:"", tone: nil, expression: nil, rhythm: nil)
 StudentAssignment.create(student: matteo, assignment: assignment7, student_audio:"", tone: 3, expression: 2, rhythm: 4, submitted: true)
