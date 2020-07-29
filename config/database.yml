@@ -25,6 +25,18 @@ development:
   <<: *default
   database: teleband_backend_development
 
+# This dev section is for wesley
+# development:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: my_api_development
+#   host: localhost
+#   pool: 5
+#   username: postgres
+#   password: 1234
+#   timeout: 5000
+
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
