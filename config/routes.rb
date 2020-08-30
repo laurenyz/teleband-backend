@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get '/teacher/profile', to: 'teachers#profile'
   get '/student/profile', to: 'students#profile'
   patch '/teacher/updategrades', to: 'teachers#updategrades'
-  post '/student_assignment/:id/submit_recording', to: 'student_assignments#attach_recording'
+  post '/student_assignments/:assignment_id/submit_recording', to: 'student_assignments#attach_recording'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

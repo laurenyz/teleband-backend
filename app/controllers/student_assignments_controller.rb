@@ -20,12 +20,13 @@ class StudentAssignmentsController < ApplicationController
             assignment_audio_recordings: {
                 assignment.title => assignment.audios
             },
-            student_audio: audio
+            student_audio: student_audio
         }
     end
 
     def attach_recording
-        student_assignment = StudentAssignment.find(params[:id])
+        student = Student.find_by(school_id: params[:school_id])
+        student_assignment = StudentAssignment.find_by(student_id: student.id, assignment_id: params[:assignment_id])
         r = student_assignment.student_recording.attach(params[:student_recording])
         url = rails_blob_url(r.first, only_path: true)
         render json: {
