@@ -4,6 +4,7 @@ class CreateAssignments < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :excerpts
       t.string :audios
+      t.text :instructions
 
       t.timestamps
     end

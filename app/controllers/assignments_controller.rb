@@ -10,7 +10,7 @@ class AssignmentsController < ApplicationController
     end
 
     def create
-        assignment = Assignment.new(title: params[:title], excerpts:"", audios:"")  
+        assignment = Assignment.new(title: params[:title], instructions: params[:instructions], excerpts:"", audios:"")  
         if assignment.valid?
             assignment.save
             students = Student.all

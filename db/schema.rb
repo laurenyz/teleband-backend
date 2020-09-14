@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_08_30_200736) do
     t.string "title"
     t.string "excerpts"
     t.string "audios"
+    t.text "instructions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
