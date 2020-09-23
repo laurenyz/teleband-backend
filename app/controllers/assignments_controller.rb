@@ -1,4 +1,6 @@
 class AssignmentsController < ApplicationController
+    include Rails.application.routes.url_helpers
+
     def index 
         assignments = Assignment.all 
         render json: assignments
@@ -10,7 +12,7 @@ class AssignmentsController < ApplicationController
     end
 
     def create
-        assignment = Assignment.new(title: params[:title], instructions: params[:instructions], excerpts:"", audios:"")  
+        assignment = Assignment.new(title: params[:title], instructions: params[:instructions], notation_url: params[:notation_url], assignment_type: params[:formType]) 
         if assignment.valid?
             assignment.save
             students = Student.all
@@ -29,7 +31,6 @@ class AssignmentsController < ApplicationController
     def destroy
         assignment = Assignment.find(params[:id])
         assignment.destroy
-
         render json: {message: "assignment deleted"}
     end
 end

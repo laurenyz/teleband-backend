@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2020_08_30_200736) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
-    t.string "excerpts"
-    t.string "audios"
+    t.string "assignment_type"
     t.text "instructions"
+    t.string "notation_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
