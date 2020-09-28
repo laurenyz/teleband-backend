@@ -12,11 +12,11 @@ class AssignmentsController < ApplicationController
     end
 
     def create
-        assignment = Assignment.new(title: params[:title], instructions: params[:instructions], assignment_type: params[:formType], assignment_type:"audio", notation_url:"") 
+        assignment = Assignment.new(title: params[:title], instructions: params[:instructions], category: params[:formType], pdf_url:"", playing_sample_url:"", accompaniment_url:"") 
         if assignment.valid?
             assignment.save
-            assignment.notationPdf.attach(params[:notationPdf])
-            assignment.update(notation_url: url_for(assignment.notationPdf))
+            assignment.pdf.attach(params[:pdf])
+            assignment.update(pdf_url: url_for(assignment.pdf))
             students = Student.all
             students.each do |student|
                 StudentAssignment.create(student: student, assignment: assignment, student_audio:"", tone: nil, expression: nil, rhythm: nil)
