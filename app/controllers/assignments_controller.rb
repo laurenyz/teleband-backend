@@ -16,7 +16,13 @@ class AssignmentsController < ApplicationController
         if assignment.valid?
             assignment.save
             assignment.pdf.attach(params[:pdf])
-            assignment.update(pdf_url: url_for(assignment.pdf))
+            if assignment.category != 'response'
+                assignment.accompaniment.attach(params[:accompaniment])
+                assignment.playing_sample.attach(params[:playing_sample])
+                assignment.update(pdf_url: url_for(assignment.pdf), accompaniment_url: url_for(assignment.accompaniment), playing_sample_url: url_for(assignment.playing_sample))
+            else 
+                assignment.update(pdf_url: url_for(assignment.pdf))
+            end
             students = Student.all
             students.each do |student|
                 StudentAssignment.create(student: student, assignment: assignment, student_audio:"", tone: nil, expression: nil, rhythm: nil)
