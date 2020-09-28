@@ -12,7 +12,7 @@ class AssignmentsController < ApplicationController
     end
 
     def create
-        assignment = Assignment.new(title: params[:title], instructions: params[:instructions], assignment_type:"audio", notation_url:"") 
+        assignment = Assignment.new(title: params[:title], instructions: params[:instructions], assignment_type: params[:formType], assignment_type:"audio", notation_url:"") 
         if assignment.valid?
             assignment.save
             assignment.notationPdf.attach(params[:notationPdf])
