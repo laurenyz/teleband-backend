@@ -48,6 +48,26 @@ class TeachersController < ApplicationController
             }
         end
     end
+
+    def update
+        teacher = Teacher.find(params[:id])
+        teacher.update(name: params[:name], email: params[:email])
+        if params[:password] != ""
+            teacher.update(password: params[:password])
+        end
+        if teacher.valid?
+            render json: {
+                    message: "Teacher information successfully updated.", 
+                    teacher: teacher,
+                    error: false
+            }
+        else
+            render json: {
+                error: true,
+                message: teacher.errors.full_messages
+            }
+        end
+    end
     
     def updategrades
         token = request.headers["Authentication"]
