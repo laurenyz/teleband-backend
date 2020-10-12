@@ -31,9 +31,25 @@ class TeachersController < ApplicationController
             studentData: teacher.allStudentsData
         }
     end
+
+    def create
+        teacher = Teacher.create(name: params[:name], email: params[:email], password: params[:password])
+        if teacher.valid?
+            teacher.save
+            render json: {
+                    message: "Teacher successfully added", 
+                    teacher: teacher,
+                    error: false
+            }
+        else
+            render json: {
+                error: true,
+                message: teacher.errors.full_messages
+            }
+        end
+    end
     
     def updategrades
-
         token = request.headers["Authentication"]
         payload = decode(token)
         teacher = Teacher.find(payload["teacher_id"])
@@ -52,8 +68,12 @@ class TeachersController < ApplicationController
             teacher: teacher,
             studentData: teacher.allStudentsData
         }
+    end
 
-
+    def destroy
+        teacher = Teacher.find(params[:id])
+        teacher.destroy
+        render json: {message: "Teacher deleted."}
     end
 
    
