@@ -48,7 +48,7 @@ class StudentsController < ApplicationController
             :except => [:created_at, :updated_at],
             :include => [:student_assignments => 
             {:except => 
-            [:created_at, :updated_at, :audios],
+            [:created_at, :updated_at],
             :include => 
             [:assignment => 
             {:except =>[ :created_at, :updated_at] 
