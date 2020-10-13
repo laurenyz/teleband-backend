@@ -19,6 +19,27 @@ class StudentsController < ApplicationController
         )
     end
 
+    def create
+        student = Student.new(school_id: params[:school_id], teacher_id: params[:teacher_id], name: params[:name], grade: params[:grade], classes: "")
+        if student.valid?
+            student.save
+            assignments = Assignment.all
+            assignments.each do |assignment|
+                StudentAssignment.create(student: student, assignment: assignment, student_audio:"", tone: nil, expression: nil, rhythm: nil, student_response: "", student_notation_url: "")
+            end
+            render json: {
+                message: "Student successfully added", 
+                studentData: {"student": student, "assignments": student.assignmentsList},
+                error: false
+            }
+        else
+            render json: {
+                error: true,
+                message: student.errors.full_messages
+            }
+        end
+    end
+
     def profile 
         payload = request.headers["Authentication"]
         student = Student.find_by(school_id: payload)

@@ -7,24 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 StudentAssignment.destroy_all
-TeacherCourse.destroy_all
-StudentCourse.destroy_all
 Assignment.destroy_all
 Teacher.destroy_all
-Course.destroy_all
 Student.destroy_all
+# TeacherCourse.destroy_all
+# StudentCourse.destroy_all
+# Course.destroy_all
 
 shewan = Teacher.create(name: "Shewan", email: "Shewan@gmail.com", password: "s")
 ann = Teacher.create(name: "Ann", email: "ann@gmail.com", password: "s")
 
-wind_ensemble = Course.create(name:"Wind Ensemble")
-concert_band = Course.create(name: "Concert Band")
+# wind_ensemble = Course.create(name:"Wind Ensemble")
+# concert_band = Course.create(name: "Concert Band")
 
-lauren = Student.create(school_id:"123456789", status: "inactive", name: "Lauren Y")
-matteo = Student.create(school_id:"8765309", status: "inactive", name: "Matteo R")
-wesley = Student.create(school_id:"00000000", status: "inactive", name: "Wesley C")
-chris = Student.create(school_id:"1111111", status: "inactive", name: "Chris Z")
-tyrion = Student.create(school_id:"22222222", status: "inactive", name: "Tyrion")
+lauren = Student.create(teacher: shewan, school_id:"123456789", name: "Lauren Y", classes:"Wind Ensemble", grade:10)
+matteo = Student.create(teacher: ann, school_id:"8765309", name: "Matteo R", classes:"Concert Band", grade:10)
+wesley = Student.create(teacher: shewan, school_id:"00000000", name: "Wesley C", classes:"Concert Band & Wind Ensemble", grade:10)
+chris = Student.create(teacher: shewan, school_id:"1111111", name: "Chris Z", classes:"Wind Ensemble", grade:10)
+tyrion = Student.create(teacher: ann, school_id:"22222222", name: "Tyrion", classes:"Concert Band", grade:10)
 
 assignment1 = Assignment.create(title: "Assignment 1", instructions: "Play this", category:"audio", pdf_url:"http://africau.edu/images/default/sample.pdf", playing_sample_url:"", accompaniment_url:"")
 assignment2 = Assignment.create(title: "Assignment 2", instructions: "Play this", category:"audio", pdf_url:"http://africau.edu/images/default/sample.pdf", playing_sample_url:"", accompaniment_url:"")
@@ -34,16 +34,16 @@ assignment5 = Assignment.create(title: "Assignment 5", instructions: "Play this"
 assignment6 = Assignment.create(title: "Assignment 6", instructions: "Play this", category:"audio", pdf_url:"http://africau.edu/images/default/sample.pdf", playing_sample_url:"", accompaniment_url:"")
 assignment7 = Assignment.create(title: "Assignment 7", instructions: "Play this", category:"audio", pdf_url:"http://africau.edu/images/default/sample.pdf", playing_sample_url:"", accompaniment_url:"")
 
-TeacherCourse.create(teacher: shewan, course: wind_ensemble)
-TeacherCourse.create(teacher: shewan, course: concert_band)
-TeacherCourse.create(teacher: ann, course: concert_band)
+# TeacherCourse.create(teacher: shewan, course: wind_ensemble)
+# TeacherCourse.create(teacher: shewan, course: concert_band)
+# TeacherCourse.create(teacher: ann, course: concert_band)
 
-StudentCourse.create(student: lauren, course: wind_ensemble)
-StudentCourse.create(student: chris, course: wind_ensemble)
-StudentCourse.create(student: chris, course: concert_band)
-StudentCourse.create(student: wesley, course: wind_ensemble)
-StudentCourse.create(student: matteo, course: concert_band)
-StudentCourse.create(student: tyrion, course: concert_band)
+# StudentCourse.create(student: lauren, course: wind_ensemble)
+# StudentCourse.create(student: chris, course: wind_ensemble)
+# StudentCourse.create(student: chris, course: concert_band)
+# StudentCourse.create(student: wesley, course: wind_ensemble)
+# StudentCourse.create(student: matteo, course: concert_band)
+# StudentCourse.create(student: tyrion, course: concert_band)
 
 
 StudentAssignment.create(student: lauren, assignment: assignment1, student_audio:"", tone: nil, expression: nil, rhythm: nil, student_response: "", student_notation_url: "")

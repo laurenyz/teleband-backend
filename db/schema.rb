@@ -47,12 +47,6 @@ ActiveRecord::Schema.define(version: 2020_08_30_200736) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "courses", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "student_assignments", force: :cascade do |t|
     t.integer "student_id"
     t.integer "assignment_id"
@@ -67,24 +61,12 @@ ActiveRecord::Schema.define(version: 2020_08_30_200736) do
     t.boolean "submitted", default: false
   end
 
-  create_table "student_courses", force: :cascade do |t|
-    t.integer "student_id"
-    t.integer "course_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "students", force: :cascade do |t|
-    t.string "school_id"
-    t.string "status"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "teacher_courses", force: :cascade do |t|
     t.integer "teacher_id"
-    t.integer "course_id"
+    t.string "school_id"
+    t.string "name"
+    t.string "classes"
+    t.integer "grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
