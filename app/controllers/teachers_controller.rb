@@ -33,7 +33,7 @@ class TeachersController < ApplicationController
     end
 
     def create
-        teacher = Teacher.create(name: params[:name], email: params[:email], password: params[:password])
+        teacher = Teacher.new(name: params[:name], email: params[:email], password: params[:password])
         if teacher.valid?
             teacher.save
             render json: {
