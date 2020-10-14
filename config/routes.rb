@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :students
   resources :teachers
   post '/login', to: 'auth#create'
+  post '/students/:teacher_id/classlist', to: 'students#import_classlist'
   get '/teacher/profile', to: 'teachers#profile'
   get '/student/profile', to: 'students#profile'
   patch '/teacher/updategrades', to: 'teachers#updategrades'

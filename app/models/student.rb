@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+    require 'securerandom'
     belongs_to :teacher
     has_many :student_assignments, :dependent => :delete_all
     has_many :assignments, through: :student_assignments
@@ -14,6 +15,10 @@ class Student < ApplicationRecord
             assignments.push(payload)
         end
         return assignments
+    end
+
+    def getRandomId
+        return SecureRandom.uuid.split("").slice(0,8).join
     end
 
 end
