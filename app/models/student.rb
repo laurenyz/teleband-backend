@@ -9,6 +9,7 @@ class Student < ApplicationRecord
         self.student_assignments.each do |student_assignment|
             payload = {
                 "title": student_assignment.assignment.title,
+                "category": student_assignment.assignment.category,
                 "id": student_assignment.assignment.id,
                 "student_assignment": student_assignment
             }
