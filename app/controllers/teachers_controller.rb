@@ -93,7 +93,7 @@ class TeachersController < ApplicationController
     def destroy
         teacher = Teacher.find(params[:id])
         teacher.destroy
-        render json: {message: "Teacher deleted."}
+        render json: {message: "Teacher account deleted."}
     end
 
    

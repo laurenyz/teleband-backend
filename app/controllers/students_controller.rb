@@ -72,6 +72,23 @@ class StudentsController < ApplicationController
             }
     end
 
+    def update
+        student = Student.find(params[:id])
+        student.update(name: params[:name], grade: params[:grade])
+        if student.valid?
+            render json: {
+                    message: "Student information successfully updated.", 
+                    studentData: {"student": student, "assignments": student.assignmentsList},
+                    error: false
+            }
+        else
+            render json: {
+                error: true,
+                message: student.errors.full_messages
+            }
+        end
+    end
+
     def profile 
         payload = request.headers["Authentication"]
         student = Student.find_by(school_id: payload)
@@ -86,6 +103,12 @@ class StudentsController < ApplicationController
             {:except =>[ :created_at, :updated_at] 
             }]}]
         )
+    end
+
+    def destroy
+        student = Student.find(params[:id])
+        student.destroy
+        render json: {message: "Student account deleted."}
     end
 
 end
