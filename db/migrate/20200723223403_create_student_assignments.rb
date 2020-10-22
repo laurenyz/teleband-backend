@@ -6,9 +6,10 @@ class CreateStudentAssignments < ActiveRecord::Migration[6.0]
       t.string :student_audio
       t.text :student_response
       t.string :student_notation_url
-      t.integer :tone
-      t.integer :rhythm
-      t.integer :expression
+      t.integer :tone, default: 1
+      t.integer :rhythm, default: 1
+      t.integer :expression, default: 1
+      t.boolean :graded, default: false
 
       t.timestamps
     end

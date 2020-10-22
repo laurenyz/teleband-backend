@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
             student.save
             assignments = Assignment.all
             assignments.each do |assignment|
-                StudentAssignment.create(student: student, assignment: assignment, student_audio:"", tone: nil, expression: nil, rhythm: nil, student_response: "", student_notation_url: "")
+                StudentAssignment.create(student: student, assignment: assignment, student_audio:"", student_response: "", student_notation_url: "")
             end
             render json: {
                 message: "Student successfully added", 
@@ -52,7 +52,7 @@ class StudentsController < ApplicationController
                 student.save
                 assignments = Assignment.all
                 assignments.each do |assignment|
-                    StudentAssignment.create(student: student, assignment: assignment, student_audio:"", tone: nil, expression: nil, rhythm: nil, student_response: "", student_notation_url: "")
+                    StudentAssignment.create(student: student, assignment: assignment, student_audio:"", student_response: "", student_notation_url: "")
                 end
                 student
             else

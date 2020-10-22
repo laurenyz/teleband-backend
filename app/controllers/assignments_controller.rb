@@ -25,7 +25,7 @@ class AssignmentsController < ApplicationController
             end
             students = Student.all
             students.each do |student|
-                StudentAssignment.create(student: student, assignment: assignment, student_audio:"", tone: nil, expression: nil, rhythm: nil, student_response: "", student_notation_url: "")
+                StudentAssignment.create(student: student, assignment: assignment, student_audio:"", student_response: "", student_notation_url: "")
             end
             render json: {
                     message: "Assignment Successfully Created", 
