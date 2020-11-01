@@ -69,26 +69,26 @@ class TeachersController < ApplicationController
         end
     end
     
-    def updategrades
-        token = request.headers["Authentication"]
-        payload = decode(token)
-        teacher = Teacher.find(payload["teacher_id"])
+    # def updategrades
+    #     token = request.headers["Authentication"]
+    #     payload = decode(token)
+    #     teacher = Teacher.find(payload["teacher_id"])
 
-        assignments = params["updateAssignment"]
-        assignments.each do |id, score|
-            current = StudentAssignment.find(id)
-            current.tone = score["tone"]
-            current.expression = score["expression"]
-            current.rhythm = score["rhythm"]
-            current.submitted = true
-            current.save
-        end
+    #     assignments = params["updateAssignment"]
+    #     assignments.each do |id, score|
+    #         current = StudentAssignment.find(id)
+    #         current.tone = score["tone"]
+    #         current.expression = score["expression"]
+    #         current.rhythm = score["rhythm"]
+    #         current.submitted = true
+    #         current.save
+    #     end
 
-        render json: {
-            teacher: teacher,
-            studentData: teacher.allStudentsData
-        }
-    end
+    #     render json: {
+    #         teacher: teacher,
+    #         studentData: teacher.allStudentsData
+    #     }
+    # end
 
     def destroy
         teacher = Teacher.find(params[:id])

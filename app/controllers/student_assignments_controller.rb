@@ -27,6 +27,23 @@ class StudentAssignmentsController < ApplicationController
         }
     end
 
+    def update
+        student_assignment=StudentAssignment.find(params[:id])
+        student_assignment.update(graded: true, rhythm: params[:rhythm], expression: params[:expression], tone: params[:tone])
+        if student_assignment.valid?
+            render json: {
+                    message: "Assignment successfully updated.", 
+                    student_assignment: student_assignment,
+                    error: false
+            }
+        else
+            render json: {
+                error: true,
+                message: student_assignment.errors.full_messages
+            }
+        end
+    end
+
     def attach_notation
         student = Student.find_by(school_id: params[:school_id])
         student_assignment = StudentAssignment.find_by(student_id: student.id, assignment_id: params[:assignment_id])
@@ -49,7 +66,7 @@ class StudentAssignmentsController < ApplicationController
     def attach_response
         student = Student.find_by(school_id: params[:school_id])
         student_assignment = StudentAssignment.find_by(student_id: student.id, assignment_id: params[:assignment_id])
-        student_assignment.update(student_response: params[:student_response], rhythm: params[:rhythm], tone: params[:tone], expression: params[:expression], submitted: true)
+        student_assignment.update(student_response: params[:student_response], rhythm: params[:rhythm], tone: params[:tone], expression: params[:expression], submitted: true, graded: true)
         render json: {
                     message: "Successfully uploaded", 
                     student_assignment: student_assignment,
