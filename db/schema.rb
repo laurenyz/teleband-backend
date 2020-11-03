@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2020_08_30_200736) do
     t.integer "teacher_id"
     t.string "school_id"
     t.string "name"
-    t.string "classes"
     t.integer "grade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
